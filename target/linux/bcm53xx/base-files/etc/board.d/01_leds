@@ -8,6 +8,14 @@ netgear,r8000)
 	ucidef_set_led_usbport "usb2" "USB 2.0" "bcm53xx:white:usb2" "usb1-port2" "usb2-port2"
 	ucidef_set_led_usbport "usb3" "USB 3.0" "bcm53xx:white:usb3" "usb1-port1" "usb2-port1" "usb4-port1"
 	;;
+asus,rt-ac88u)
+	ucidef_set_led_default "power" "Power" "white:power" "1"
+	ucidef_set_led_default "wan" "WAN" "red:wan" "0"
+	ucidef_set_led_netdev "lan" "LAN" "white:lan" "eth1"
+	ucidef_set_led_default "wps" "WPS" "white:wps" "0"
+	ucidef_set_led_usbport "usb2" "USB 2.0" "white:usb2" "usb1-port1" "usb1-port2"
+	ucidef_set_led_usbport "usb3" "USB 3.0" "white:usb3" "usb4-port1"
+	;;
 esac
 
 board_config_flush

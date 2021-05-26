@@ -12,6 +12,10 @@ bcm53xx_setup_interfaces()
 	# On BCM4708 / BCM4709(4) there are 3 Ethernet interfaces connected to 3 switch
 	# ports. It's up to vendor which to use.
 	case "$board" in
+	asus,rt-ac88u)
+		ucidef_add_switch "switch0" \
+			"3:lan:1" "2:lan:2" "1:lan:3" "0:lan:4" "4:wan" "7@eth1"
+		;;
 	tenda,ac9)
 		ucidef_add_switch "switch0" \
 			"1:lan" "2:lan" "3:lan" "4:lan" "8@eth0" "0:wan" "5@eth1"
