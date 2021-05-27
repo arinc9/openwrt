@@ -25,10 +25,10 @@
 #include  "./rtl8367c/include/stat.h"
 #include  "./rtl8367c/include/port.h"
 
-#define RTL8367C_SW_CPU_PORT    6
+#define RTL8367C_SW_CPU_PORT    6	//might be 7
 
- //RTL8367C_PHY_PORT_NUM + ext0 + ext1
-#define RTL8367C_NUM_PORTS 7 
+ //RTL8367C_PHY_PORT_NUM + ext0	//might be ext1
+#define RTL8367C_NUM_PORTS 6 
 #define RTL8367C_NUM_VIDS  4096   
 
 struct rtl8367_priv {
@@ -49,7 +49,7 @@ struct rtl8367_vlan_info {
 
 struct rtl8367_priv  rtl8367_priv_data;
 
-unsigned int rtl8367c_port_id[RTL8367C_NUM_PORTS]={0,1,2,3,4,EXT_PORT1,EXT_PORT0};
+unsigned int rtl8367c_port_id[RTL8367C_NUM_PORTS]={0,1,2,3,4,EXT_PORT0};
 
 void (*rtl8367_switch_reset_func)(void)=NULL;
 
@@ -555,7 +555,7 @@ static const struct switch_dev_ops rtl8367_sw_ops = {
 	.get_port_link = rtl8367_sw_get_port_link,
 };
 
-int rtl8367s_swconfig_init(void (*reset_func)(void))
+int rtl8365mb_swconfig_init(void (*reset_func)(void))
 {
 	struct rtl8367_priv  *priv = &rtl8367_priv_data;
 	struct switch_dev *dev=&priv->swdev;

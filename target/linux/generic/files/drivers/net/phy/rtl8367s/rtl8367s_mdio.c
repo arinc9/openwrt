@@ -38,7 +38,7 @@ extern int gsw_debug_proc_init(void);
 extern void gsw_debug_proc_exit(void);
 
 #ifdef CONFIG_SWCONFIG
-extern int rtl8367s_swconfig_init( void (*reset_func)(void) );
+extern int rtl8365mb_swconfig_init( void (*reset_func)(void) );
 #endif
 
 /*mii_mgr_read/mii_mgr_write is the callback API for rtl8367 driver*/
@@ -68,7 +68,7 @@ unsigned int mii_mgr_write(unsigned int phy_addr,unsigned int phy_register,unsig
 	return 0;
 }
 
-static int rtl8367s_hw_reset(void)
+static int rtl8365mb_hw_reset(void)
 {
 	struct rtk_gsw *gsw = _gsw;
 	int ret;
@@ -95,7 +95,7 @@ static int rtl8367s_hw_reset(void)
 	
 }
 
-static int rtl8367s_vlan_config(int want_at_p0)
+static int rtl8365mb_vlan_config(int want_at_p0)
 {
 	rtk_vlan_cfg_t vlan1, vlan2;
 	
@@ -125,8 +125,8 @@ static int rtl8367s_vlan_config(int want_at_p0)
 	
 	memset(&vlan2, 0x00, sizeof(rtk_vlan_cfg_t));
 	
-	RTK_PORTMASK_PORT_SET(vlan2.mbr, EXT_PORT1);
-	RTK_PORTMASK_PORT_SET(vlan2.untag, EXT_PORT1);
+	RTK_PORTMASK_PORT_SET(vlan2.mbr, EXT_PORT0);
+	RTK_PORTMASK_PORT_SET(vlan2.untag, EXT_PORT0);
 
 	if (want_at_p0) {
 		RTK_PORTMASK_PORT_SET(vlan2.mbr, UTP_PORT0);
@@ -143,7 +143,7 @@ static int rtl8367s_vlan_config(int want_at_p0)
 	rtk_vlan_portPvid_set(UTP_PORT1, 1, 0);
 	rtk_vlan_portPvid_set(UTP_PORT2, 1, 0);
 	rtk_vlan_portPvid_set(UTP_PORT3, 1, 0);
-	rtk_vlan_portPvid_set(EXT_PORT1, 2, 0);
+	rtk_vlan_portPvid_set(EXT_PORT0, 2, 0);
 
 	if (want_at_p0) {
 		rtk_vlan_portPvid_set(UTP_PORT0, 2, 0);
@@ -156,10 +156,10 @@ static int rtl8367s_vlan_config(int want_at_p0)
 	return 0;	
 }
 
-static int rtl8367s_hw_init(void)
+static int rtl8365mb_hw_init(void)
 {
 
-	rtl8367s_hw_reset();
+	rtl8365mb_hw_reset();
 
 	if(rtk_switch_init())
 	        return -1;
@@ -175,7 +175,8 @@ static int rtl8367s_hw_init(void)
 	return 0;
 }
 
-static void set_rtl8367s_sgmii(void)
+/* We don't have SGMII/HSGMII extra interface on RTL8365MB
+static void set_rtl8365mb_sgmii(void)
 {
 	rtk_port_mac_ability_t mac_cfg;
 	rtk_mode_ext_t mode;
@@ -193,8 +194,9 @@ static void set_rtl8367s_sgmii(void)
 	rtk_port_phyEnableAll_set(ENABLED);
 
 }
+*/
 
-static void set_rtl8367s_rgmii(void)
+static void set_rtl8365mb_rgmii(void)
 {
 	rtk_port_mac_ability_t mac_cfg;
 	rtk_mode_ext_t mode;
@@ -207,17 +209,17 @@ static void set_rtl8367s_rgmii(void)
 	mac_cfg.nway = DISABLED;
 	mac_cfg.txpause = ENABLED;
 	mac_cfg.rxpause = ENABLED;
-	rtk_port_macForceLinkExt_set(EXT_PORT1, mode, &mac_cfg);
-	rtk_port_rgmiiDelayExt_set(EXT_PORT1, 1, 3);
+	rtk_port_macForceLinkExt_set(EXT_PORT0, mode, &mac_cfg);
+	rtk_port_rgmiiDelayExt_set(EXT_PORT0, 1, 3);
 	rtk_port_phyEnableAll_set(ENABLED);
 	
 }
 
 void init_gsw(void)
 {
-	rtl8367s_hw_init();
-	set_rtl8367s_sgmii();
-	set_rtl8367s_rgmii();
+	rtl8365mb_hw_init();
+//	set_rtl8365mb_sgmii();
+	set_rtl8365mb_rgmii();
 }
 
 // bleow are platform driver
@@ -266,15 +268,15 @@ static int rtk_gsw_probe(struct platform_device *pdev)
 						"mediatek,port_map", &pm)) {
 
 		if (!strcasecmp(pm, "wllll"))
-			rtl8367s_vlan_config(1); 
+			rtl8365mb_vlan_config(1); 
 		else
-			rtl8367s_vlan_config(0);
+			rtl8365mb_vlan_config(0);
 		
 		} else {
 #ifdef CONFIG_SWCONFIG		
-		rtl8367s_swconfig_init(&init_gsw);
+		rtl8365mb_swconfig_init(&init_gsw);
 #else
-		rtl8367s_vlan_config(0);
+		rtl8365mb_vlan_config(0);
 #endif
 	}
 
