@@ -10,7 +10,7 @@
  	bcm47094-luxul-xap-1610.dtb \
 --- /dev/null
 +++ b/arch/arm/boot/dts/bcm47094-asus-rt-ac88u.dts
-@@ -0,0 +1,191 @@
+@@ -0,0 +1,198 @@
 +// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
 +/*
 + * Broadcom BCM470X / BCM5301X ARM platform code.
@@ -100,6 +100,13 @@
 +			linux,code = <KEY_BRIGHTNESS_ZERO>;
 +			gpios = <&chipcommon 4 GPIO_ACTIVE_LOW>;
 +		};
++	};
++
++	rtkgsw: rtkgsw@0 {
++		compatible = "mediatek,rtk-gsw";
++		mediatek,mdio = <&mdio>;
++		mediatek,reset-pin = <&chipcommon 54 GPIO_ACTIVE_HIGH>;
++		status = "okay";
 +	};
 +};
 +
