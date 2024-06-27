@@ -1,0 +1,4 @@
+
+config openvpn 'client'
+	option config '/etc/openvpn/client.ovpn'
+	option enabled '1'

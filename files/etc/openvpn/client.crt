@@ -1,0 +1,84 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            0f:65:e9:d6:7f:8a:01:bc:06:27:65:bc:7b:ca:7d:3b
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: CN=Xpedite
+        Validity
+            Not Before: Jun 27 20:51:11 2024 GMT
+            Not After : Jun  3 20:51:11 2124 GMT
+        Subject: CN=client
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:9e:61:86:93:59:95:b4:17:13:f9:4e:f5:de:78:
+                    e6:75:93:74:6d:3b:5a:a4:45:9f:c5:63:74:d2:20:
+                    98:8e:87:c8:86:79:bd:83:3e:82:09:1a:8a:93:db:
+                    d5:df:7d:cb:77:ff:a4:19:f7:bf:92:89:3b:42:8b:
+                    45:b1:9e:a0:ef:b0:10:85:d8:69:d3:28:6c:64:f4:
+                    8f:64:0c:d7:f2:d9:df:4f:49:25:59:b5:c8:c3:f9:
+                    d2:78:48:61:70:ec:f7:23:25:62:8c:03:7d:25:91:
+                    b4:b0:34:e2:a6:2d:f5:3e:cf:27:10:7b:ad:f2:a9:
+                    f6:07:2a:55:10:05:13:f4:f6:e0:e5:2a:81:45:fd:
+                    35:76:97:4f:43:c1:b7:f1:e0:99:9e:72:65:34:78:
+                    88:e2:65:2e:a9:38:22:a5:db:e2:89:86:d1:0c:c3:
+                    a7:20:5f:d9:8b:47:ad:5d:8f:4f:25:f8:d8:6d:71:
+                    49:53:00:a9:d1:3f:97:b7:c1:f1:d8:29:df:ae:d5:
+                    23:ec:63:8c:d2:92:dd:7a:f9:57:aa:57:81:54:13:
+                    1d:28:63:60:32:63:da:54:28:9f:dc:a0:2b:0a:78:
+                    ef:a6:ee:fd:f8:3a:fa:82:50:7d:dd:6c:6e:c0:81:
+                    34:e9:b0:7a:a7:97:45:9c:79:b1:e5:c7:d0:c9:9d:
+                    1c:cd
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            X509v3 Subject Key Identifier: 
+                6F:89:0D:BF:F5:12:10:B0:2D:17:ED:09:6E:AB:CE:5E:43:C2:40:D7
+            X509v3 Authority Key Identifier: 
+                keyid:A8:3B:CD:D6:5A:54:68:15:1D:00:6C:8C:D1:07:DB:4E:06:78:67:24
+                DirName:/CN=Xpedite
+                serial:33:83:9A:04:97:E1:C7:31:FF:B3:BA:41:7D:7D:7E:27:A0:D9:6F:F9
+            X509v3 Extended Key Usage: 
+                TLS Web Client Authentication
+            X509v3 Key Usage: 
+                Digital Signature
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        03:51:f6:46:40:e5:b8:a2:74:bd:40:ff:0a:46:0e:3a:2a:10:
+        95:c1:40:38:01:0e:6e:e3:d7:ba:19:01:29:ad:11:b9:3c:7b:
+        aa:d7:5d:7f:48:a7:fa:ee:3b:f7:2a:36:ef:83:72:c2:cd:2e:
+        09:65:e2:30:10:42:4a:9b:1f:56:1c:9c:4a:a1:5a:fa:17:31:
+        65:8a:9c:c3:d1:6e:9b:f1:d6:cc:e0:bf:45:a5:be:13:ba:07:
+        8b:cf:d1:b9:12:ef:81:43:45:88:a1:e3:0e:2f:35:2d:e6:39:
+        f4:69:5a:29:cc:b8:af:37:9c:21:6b:1a:c1:f6:03:1d:45:14:
+        bb:62:f3:d7:ce:60:9e:8a:11:43:3b:86:8a:e1:92:26:7a:3c:
+        33:92:34:2e:36:c4:dd:18:ce:16:d0:78:26:67:7d:f0:47:8a:
+        f2:d5:90:6b:89:ef:8c:52:ae:7c:dd:0b:13:62:ba:c8:df:c8:
+        e2:b0:d4:85:d8:8c:3f:eb:54:bb:2c:c0:db:eb:c8:4c:88:f4:
+        f8:e1:da:5d:0c:e5:9a:13:ae:5f:6e:6d:c7:cb:ba:79:ff:c6:
+        3e:67:95:3d:5c:f7:92:b6:d8:89:1e:86:38:20:e4:2b:dc:e0:
+        51:f7:e0:e3:e7:31:2a:5b:21:5a:a5:8e:69:1a:f1:78:94:02:
+        55:15:58:96
+-----BEGIN CERTIFICATE-----
+MIIDTjCCAjagAwIBAgIQD2Xp1n+KAbwGJ2W8e8p9OzANBgkqhkiG9w0BAQsFADAS
+MRAwDgYDVQQDDAdYcGVkaXRlMCAXDTI0MDYyNzIwNTExMVoYDzIxMjQwNjAzMjA1
+MTExWjARMQ8wDQYDVQQDDAZjbGllbnQwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw
+ggEKAoIBAQCeYYaTWZW0FxP5TvXeeOZ1k3RtO1qkRZ/FY3TSIJiOh8iGeb2DPoIJ
+GoqT29Xffct3/6QZ97+SiTtCi0WxnqDvsBCF2GnTKGxk9I9kDNfy2d9PSSVZtcjD
++dJ4SGFw7PcjJWKMA30lkbSwNOKmLfU+zycQe63yqfYHKlUQBRP09uDlKoFF/TV2
+l09Dwbfx4JmecmU0eIjiZS6pOCKl2+KJhtEMw6cgX9mLR61dj08l+NhtcUlTAKnR
+P5e3wfHYKd+u1SPsY4zSkt16+VeqV4FUEx0oY2AyY9pUKJ/coCsKeO+m7v34OvqC
+UH3dbG7AgTTpsHqnl0WcebHlx9DJnRzNAgMBAAGjgZ4wgZswCQYDVR0TBAIwADAd
+BgNVHQ4EFgQUb4kNv/USELAtF+0JbqvOXkPCQNcwTQYDVR0jBEYwRIAUqDvN1lpU
+aBUdAGyM0QfbTgZ4ZyShFqQUMBIxEDAOBgNVBAMMB1hwZWRpdGWCFDODmgSX4ccx
+/7O6QX19fieg2W/5MBMGA1UdJQQMMAoGCCsGAQUFBwMCMAsGA1UdDwQEAwIHgDAN
+BgkqhkiG9w0BAQsFAAOCAQEAA1H2RkDluKJ0vUD/CkYOOioQlcFAOAEObuPXuhkB
+Ka0RuTx7qtddf0in+u479yo274Nyws0uCWXiMBBCSpsfVhycSqFa+hcxZYqcw9Fu
+m/HWzOC/RaW+E7oHi8/RuRLvgUNFiKHjDi81LeY59GlaKcy4rzecIWsawfYDHUUU
+u2Lz185gnooRQzuGiuGSJno8M5I0LjbE3RjOFtB4Jmd98EeK8tWQa4nvjFKufN0L
+E2K6yN/I4rDUhdiMP+tUuyzA2+vITIj0+OHaXQzlmhOuX25tx8u6ef/GPmeVPVz3
+krbYiR6GOCDkK9zgUffg4+cxKlshWqWOaRrxeJQCVRVYlg==
+-----END CERTIFICATE-----
