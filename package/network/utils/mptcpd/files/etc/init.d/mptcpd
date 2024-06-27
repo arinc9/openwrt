@@ -1,0 +1,14 @@
+#!/bin/sh /etc/rc.common
+
+USE_PROCD=1
+
+START=10
+
+EXEC=/usr/bin/mptcpd
+
+start_service() {
+	procd_open_instance
+	procd_set_param command $EXEC
+	procd_set_param respawn
+	procd_close_instance
+}
