@@ -67,17 +67,18 @@ define Device/celerway_m5-3-e5c2w2
   DEVICE_VENDOR := Celerway
   DEVICE_MODEL := M5.3-E5C2W2
   DEVICE_DTS := mt7622-celerway-m5-3-e5c2w2
+  DEVICE_DTS_DIR := ../dts
   DEVICE_PACKAGES := kmod-ata-ahci-mtk kmod-btmtkuart kmod-usb3 e2fsprogs mkf2fs f2fsck
   DEVICE_DTC_FLAGS := --pad 4096
   DEVICE_DTS_LOADADDR := 0x43f00000
-  ARTIFACTS := emmc-preloader.bin emmc-bl31-uboot.fip sdcard.img.gz snand-preloader.bin snand-bl31-uboot.fip
+#  ARTIFACTS := emmc-preloader.bin emmc-bl31-uboot.fip sdcard.img.gz snand-preloader.bin snand-bl31-uboot.fip
   IMAGES := sysupgrade.itb
   KERNEL_INITRAMFS_SUFFIX := -recovery.itb
-  ARTIFACT/emmc-preloader.bin	:= bl2 emmc-2ddr
-  ARTIFACT/emmc-bl31-uboot.fip	:= bl31-uboot celerway-m5-3-e5c2w2-emmc
-  ARTIFACT/snand-preloader.bin	:= bl2 snand-ubi-2ddr
-  ARTIFACT/snand-bl31-uboot.fip	:= bl31-uboot celerway-m5-3-e5c2w2-snand
-  ARTIFACT/sdcard.img.gz	:= mt7622-gpt sdmmc |\
+#  ARTIFACT/emmc-preloader.bin	:= bl2 emmc-2ddr
+#  ARTIFACT/emmc-bl31-uboot.fip	:= bl31-uboot celerway-m5-3-e5c2w2-emmc
+#  ARTIFACT/snand-preloader.bin	:= bl2 snand-ubi-2ddr
+#  ARTIFACT/snand-bl31-uboot.fip	:= bl31-uboot celerway-m5-3-e5c2w2-snand
+#  ARTIFACT/sdcard.img.gz	:= mt7622-gpt sdmmc |\
 				   pad-to 512k | bl2 sdmmc-2ddr |\
 				   pad-to 2048k | bl31-uboot celerway-m5-3-e5c2w2-sdmmc |\
 				$(if $(CONFIG_TARGET_ROOTFS_INITRAMFS),\
@@ -96,8 +97,8 @@ ifeq ($(DUMP),)
   IMAGE_SIZE := $$(shell expr 45 + $$(CONFIG_TARGET_ROOTFS_PARTSIZE))m
 endif
   KERNEL			:= kernel-bin | gzip
-  KERNEL_INITRAMFS		:= kernel-bin | lzma | fit lzma $$(DTS_DIR)/$$(DEVICE_DTS).dtb with-initrd | pad-to 128k
-  IMAGE/sysupgrade.itb		:= append-kernel | fit gzip $$(DTS_DIR)/$$(DEVICE_DTS).dtb external-static-with-rootfs | append-metadata
+  KERNEL_INITRAMFS		:= kernel-bin | lzma | fit lzma $$(KDIR)/image-$$(firstword $$(DEVICE_DTS)).dtb with-initrd | pad-to 128k
+  IMAGE/sysupgrade.itb		:= append-kernel | fit gzip $$(KDIR)/image-$$(firstword $$(DEVICE_DTS)).dtb external-static-with-rootfs | append-metadata
 endef
 TARGET_DEVICES += celerway_m5-3-e5c2w2
 
