@@ -1061,7 +1061,7 @@
             phandle = <0x00000067>;
             switch@0 {
                 compatible = "mediatek,mt7531";
-                reg = <0x00000000>;
+                reg = <0x1f>;
                 interrupt-controller;
                 #interrupt-cells = <0x00000001>;
                 interrupt-parent = <0x00000013>;

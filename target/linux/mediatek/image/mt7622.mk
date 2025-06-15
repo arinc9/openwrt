@@ -71,28 +71,8 @@ define Device/celerway_m5-3-e5c2w2
   DEVICE_PACKAGES := kmod-ata-ahci-mtk kmod-btmtkuart kmod-usb3 e2fsprogs mkf2fs f2fsck
   DEVICE_DTC_FLAGS := --pad 4096
   DEVICE_DTS_LOADADDR := 0x43f00000
-#  ARTIFACTS := emmc-preloader.bin emmc-bl31-uboot.fip sdcard.img.gz snand-preloader.bin snand-bl31-uboot.fip
   IMAGES := sysupgrade.itb
   KERNEL_INITRAMFS_SUFFIX := -recovery.itb
-#  ARTIFACT/emmc-preloader.bin	:= bl2 emmc-2ddr
-#  ARTIFACT/emmc-bl31-uboot.fip	:= bl31-uboot celerway-m5-3-e5c2w2-emmc
-#  ARTIFACT/snand-preloader.bin	:= bl2 snand-ubi-2ddr
-#  ARTIFACT/snand-bl31-uboot.fip	:= bl31-uboot celerway-m5-3-e5c2w2-snand
-#  ARTIFACT/sdcard.img.gz	:= mt7622-gpt sdmmc |\
-				   pad-to 512k | bl2 sdmmc-2ddr |\
-				   pad-to 2048k | bl31-uboot celerway-m5-3-e5c2w2-sdmmc |\
-				$(if $(CONFIG_TARGET_ROOTFS_INITRAMFS),\
-				   pad-to 6144k | append-image-stage initramfs-recovery.itb | check-size 38912k |\
-				) \
-				   pad-to 38912k | mt7622-gpt emmc |\
-				   pad-to 39424k | bl2 emmc-2ddr |\
-				   pad-to 40960k | bl31-uboot celerway-m5-3-e5c2w2-emmc |\
-				   pad-to 43008k | bl2 snand-ubi-2ddr |\
-				   pad-to 43520k | bl31-uboot celerway-m5-3-e5c2w2-snand |\
-				$(if $(CONFIG_TARGET_ROOTFS_SQUASHFS), \
-				   pad-to 46080k | append-image squashfs-sysupgrade.itb | check-size |\
-				) \
-				  gzip
 ifeq ($(DUMP),)
   IMAGE_SIZE := $$(shell expr 45 + $$(CONFIG_TARGET_ROOTFS_PARTSIZE))m
 endif
@@ -101,7 +81,6 @@ endif
   IMAGE/sysupgrade.itb		:= append-kernel | fit gzip $$(KDIR)/image-$$(firstword $$(DEVICE_DTS)).dtb external-static-with-rootfs | append-metadata
 endef
 TARGET_DEVICES += celerway_m5-3-e5c2w2
-
 
 define Device/bananapi_bpi-r64
   DEVICE_VENDOR := Bananapi
